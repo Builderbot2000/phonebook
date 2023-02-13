@@ -1,0 +1,33 @@
+{
+  "name": "phonebook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "npm run build:ui && nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rd /s /q build && mkdir build && cd ../frontend/ && npm run build && xcopy /e build \"..\\backend\\build\"",
+    "deploy": "fly deploy",
+    "deploy:full": "npm run build:ui && npm run deploy",    
+    "logs:prod": "fly logs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Builderbot2000/phonebook.git"
+  },
+  "author": "Kevin Tang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Builderbot2000/phonebook/issues"
+  },
+  "homepage": "https://github.com/Builderbot2000/phonebook#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
