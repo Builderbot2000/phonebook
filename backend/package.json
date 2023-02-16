@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "npm run build:ui && nodemon index.js",
+    "dev": "nodemon index.js",
+    "dev:full": "npm run build:ui && nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rd /s /q build && mkdir build && cd ../frontend/ && npm run build && xcopy /e build \"..\\backend\\build\"",
     "deploy": "fly deploy",
-    "deploy:full": "npm run build:ui && npm run deploy",    
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "lint": "eslint .",
     "logs:prod": "fly logs"
   },
   "repository": {
@@ -24,10 +26,15 @@
   "homepage": "https://github.com/Builderbot2000/phonebook#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "mongoose": "^6.9.1",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "eslint": "^8.34.0",
     "nodemon": "^2.0.20"
   }
 }

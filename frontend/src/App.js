@@ -77,7 +77,6 @@ const App = () => {
               setTimeout(() => {setNotification(null)}, 5000)
             })
             .catch(error => {
-              console.log(error)
               setNStyle({
                 color: 'red',
                 background: 'lightgrey',
@@ -100,7 +99,21 @@ const App = () => {
         setPersons(persons.concat(newPersons))
         setNewName('')
         setNewNumber('')
+        setNStyle(null)
         setNotification(`Added ${personObject.name}`)
+        setTimeout(() => {setNotification(null)}, 5000)
+      })
+      .catch(error => {
+        setNotification(`${error.response.data.error}`)
+        setNStyle({
+          color: 'red',
+          background: 'lightgrey',
+          fontSize: 20,
+          borderStyle: 'solid',
+          borderRadius: 5,
+          padding: 10,
+          marginBottom: 10
+        })
         setTimeout(() => {setNotification(null)}, 5000)
       })
   }
